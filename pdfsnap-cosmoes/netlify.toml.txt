@@ -1,0 +1,42 @@
+# Netlify Configuration File
+
+[build]
+  # Base directory for the build
+  base = "/"
+
+  # Directory containing the site files
+  publish = "public"
+
+  # Build command (optional for static sites)
+  command = "npm install && npm run build"
+
+  # Environment variables
+  [build.environment]
+    NODE_VERSION = "16"  # Node.js version
+
+# Redirects for single-page apps (SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Functions configuration
+[functions]
+  # Directory containing serverless functions
+  directory = "netlify/functions"
+
+  # Node.js version for functions
+  node_bundler = "esbuild"
+
+# Headers for security and caching
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Environment variables (optional)
+[context.production.environment]
+  API_KEY = "your-api-key"  # Replace with actual API key if needed

@@ -1,0 +1,7 @@
+{
+  "name": "pdfsnap",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "tesseract.js": "^2.1.0"
+  }
+}
